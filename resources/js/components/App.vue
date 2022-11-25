@@ -1,5 +1,5 @@
 <template>
-  <div class="container p-3">test vue</div>
+  <div>test vue</div>
 </template>
 
 <script>
