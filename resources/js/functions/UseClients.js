@@ -5,14 +5,15 @@ export function useClients() {
     const errorMessage = ref('')
     const clients = ref([])
     const client = ref()
-    const form = reactive({
+    const initialForm = {
         id: null,
         firstName: "",
         lastName: "",
         contact: "",
         email: "",
         interests: [],
-    })
+    }
+    const form = reactive({ ...initialForm })
 
     async function getClients() {
         const { data: response } = await axios.get('/api/clients')
@@ -43,6 +44,7 @@ export function useClients() {
             })
 
             client.value = response
+            reset()
         }
         catch (ex) {
             errorMessage.value = ex.response.data.message;
@@ -61,6 +63,7 @@ export function useClients() {
             })
 
             client.value = response
+            reset()
         }
         catch (ex) {
             errorMessage.value = ex.response.data.message;
@@ -75,6 +78,11 @@ export function useClients() {
         catch (ex) {
             errorMessage.value = ex.response.data.message;
         }
+    }
+
+    function reset() {
+        Object.assign(form, initialForm);
+        errorMessage.value = "";
     }
 
     return {

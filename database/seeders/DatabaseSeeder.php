@@ -14,13 +14,19 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        // User::factory(10)->create();
 
-        \App\Models\User::create([
+        \App\Models\Role::insert([
+            ['id' => 1, 'name' => 'Admin'],
+            ['id' => 2, 'name' => 'Client']
+        ]);
+
+        \App\Models\User::factory()->create([
             'first_name' => 'Admin',
             'last_name' => 'User',
             'contact_no' => '123',
-            'email' => 'admin@test.com']);
+            'email' => 'admin@test.com',
+            'role_id' => 1]);
 
         \App\Models\Interest::insert([
             ['name' => 'Reading'],

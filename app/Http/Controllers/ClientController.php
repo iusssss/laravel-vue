@@ -37,6 +37,7 @@ class ClientController extends Controller
         $client->last_name = $request->last_name;
         $client->contact_no = $request->contact_no;
         $client->email = $request->email;
+        $client->role_id = 2;
 
 
         DB::transaction(function() use ($client, $request) {
@@ -60,6 +61,7 @@ class ClientController extends Controller
         $client->last_name = $request->last_name;
         $client->contact_no = $request->contact_no;
         $client->email = $request->email;
+        $client->role_id = 2;
 
         $client->save();
 

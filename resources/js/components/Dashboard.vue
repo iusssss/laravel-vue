@@ -102,7 +102,7 @@ export default {
     }
 
     function hideModal(elId) {
-      return bootstrap.Modal.getInstance(document.querySelector(elId));
+      bootstrap.Modal.getInstance(document.querySelector(elId)).hide();
     }
 
     return {
