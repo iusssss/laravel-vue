@@ -18,7 +18,9 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'first_name',
+        'last_name',
+        'contact_no',
         'email',
         'password',
     ];
@@ -33,7 +35,7 @@ class User extends Authenticatable
         'remember_token',
     ];
 
-    /**
+/**
      * The attributes that should be cast.
      *
      * @var array<string, string>
@@ -44,5 +46,9 @@ class User extends Authenticatable
 
     public function interests() {
         return $this->hasMany(ClientInterest::class);
+    }
+
+    public function clients() {
+        return $this->hasMany(User::class, 'created_by');
     }
 }
